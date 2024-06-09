@@ -1,0 +1,24 @@
+# Ignore build directory
+/build/
+
+# Ignore cache files
+.cache/
+
+# Ignore CMake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+
+# Ignore shell scripts if you don't want to track them
+*.sh
+
+# Ignore binary files
+*.o
+*.so
+*.exe
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
