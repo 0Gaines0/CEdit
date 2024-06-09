@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/gaines/dev/Cedit",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -fPIC -std=gnu++14 -o CMakeFiles/MyQtApp.dir/main.cpp.o -c /home/gaines/dev/Cedit/main.cpp",
+  "file": "/home/gaines/dev/Cedit/main.cpp"
+},
+{
+  "directory": "/home/gaines/dev/Cedit",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -fPIC -std=gnu++14 -o CMakeFiles/MyQtApp.dir/View/NumberedLineArea.cpp.o -c /home/gaines/dev/Cedit/View/NumberedLineArea.cpp",
+  "file": "/home/gaines/dev/Cedit/View/NumberedLineArea.cpp"
+},
+{
+  "directory": "/home/gaines/dev/Cedit",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -fPIC -std=gnu++14 -o CMakeFiles/MyQtApp.dir/View/TextEditor.cpp.o -c /home/gaines/dev/Cedit/View/TextEditor.cpp",
+  "file": "/home/gaines/dev/Cedit/View/TextEditor.cpp"
+}
+]

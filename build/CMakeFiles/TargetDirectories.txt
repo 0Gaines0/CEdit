@@ -1,0 +1,4 @@
+/home/gaines/dev/Cedit/build/CMakeFiles/MyQtApp.dir
+/home/gaines/dev/Cedit/build/CMakeFiles/edit_cache.dir
+/home/gaines/dev/Cedit/build/CMakeFiles/rebuild_cache.dir
+/home/gaines/dev/Cedit/build/CMakeFiles/MyQtApp_autogen.dir
