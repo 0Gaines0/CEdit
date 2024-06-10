@@ -30,6 +30,9 @@ public:
   void deleteCurrentTab();
   void updatePos();
 
+public slots:
+  void onTabBarDoubleClicked(const int index);
+
 protected:
   void paintEvent(QPaintEvent *event);
 };

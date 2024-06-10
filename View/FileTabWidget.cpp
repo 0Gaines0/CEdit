@@ -1,6 +1,8 @@
 #include "FileTabWidget.h"
 #include "TextEditor.h"
 #include "ViewConstants.h"
+#include <QInputDialog>
+#include <QLineEdit>
 #include <QTabBar>
 #include <iostream>
 #include <iterator>
@@ -19,9 +21,23 @@ FileTabWidget::FileTabWidget(QWidget *parent) : QTabWidget(parent) {
   this->configureTabBtns();
   this->updatePos();
   this->addNewTab();
+  connect(this->tabBar(), &QTabBar::tabBarDoubleClicked, this,
+          &FileTabWidget::onTabBarDoubleClicked);
 }
 
 FileTabWidget::~FileTabWidget() = default;
+
+void FileTabWidget::onTabBarDoubleClicked(const int index) {
+  bool dataInputted = true;
+  QString newTabBarName = QInputDialog::getText(
+      this, tr("Change Tab Name"), tr("Insert New Tab Name"), QLineEdit::Normal,
+      this->tabText(index), &dataInputted);
+
+  if (dataInputted) {
+    this->setTabText(index, newTabBarName);
+  }
+  this->updateTabBtnsPos();
+}
 
 QWidget *FileTabWidget::addNewTab() {
   TextEditor *editor = new TextEditor();
@@ -69,7 +85,7 @@ void FileTabWidget::updateAddTabBtnPos() {
   QRect tabRect = this->tabBar()->tabRect(currentIndex - 1);
   int xPoint = 0;
   if (this->tabBar()->count() == 1) {
-    xPoint = tabRect.x() + ViewConstants::tabBtnOffset;
+    xPoint = tabRect.x() + tabRect.width();
 
   } else {
     xPoint = tabRect.x() + tabRect.width();
