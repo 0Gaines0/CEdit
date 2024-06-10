@@ -21,9 +21,10 @@ void MainWindow::configureMenuBar() {
   this->menuBar->addMenu("Edit");
   this->menuBar->addMenu("View");
   this->menuBar->addMenu("Settings");
-  this->menuBar->setStyleSheet("background-color: rgb(250,250,250);}color: "
-                               "rgb(80,80,80);}selection-color: "
-                               "rgb(0, 0, 0);}");
+  this->menuBar->setStyleSheet("background-color: rgb(250,250,250);");
+  this->setStyleSheet(this->styleSheet().append("color: rgb(80, 80, 80);"));
+  this->setStyleSheet(
+      this->styleSheet().append("selection-color: rgb(0, 0, 0);"));
 }
 
 } // namespace View
