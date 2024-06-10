@@ -98,16 +98,11 @@ void TextEditor::lineNumberAreaPaintEvent(QPaintEvent *event) {
   int bottom = top + (int)this->blockBoundingRect(block).height();
 
   QTextCursor cursor = this->textCursor();
-  int currentNum = cursor.blockNumber();
 
   while (block.isValid() && top <= event->rect().bottom()) {
     if (block.isVisible() && bottom >= event->rect().top()) {
       QString number = QString::number(blockNum + 1);
-      if (blockNum == currentNum) {
-        QColor color = View::ViewConstants::HIGHLIGHT_COLOR;
-        painter.fillRect(0, top, this->lineNumberArea->sizeHint().width(),
-                         this->fontMetrics().height(), color);
-      }
+
       painter.setPen(Qt::black);
       painter.drawText(0, top, this->lineNumberArea->sizeHint().width(),
                        this->fontMetrics().height(), Qt::AlignRight, number);
