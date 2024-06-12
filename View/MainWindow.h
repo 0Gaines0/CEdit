@@ -12,6 +12,14 @@ private:
   QMenuBar *menuBar;
 
   void configureMenuBar();
+  void configureFileMenuBar();
+  void configureEditMenuBar();
+  void configureViewMenuBar();
+  void configureSettingsMenuBar();
+
+private slots:
+  void addNewTab();
+  void deleteCurrentTab();
 
 public:
   MainWindow(int width, int height);
