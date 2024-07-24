@@ -1,4 +1,5 @@
 #include "RopeNode.h"
+#include <iostream>
 
 namespace Model {
 
@@ -8,6 +9,7 @@ RopeNode::RopeNode() {
   this->parentNode = nullptr;
   this->currentStr = nullptr;
   this->leafCount = 0;
+  this->weight = 0;
 }
 
 RopeNode::~RopeNode() {
@@ -64,12 +66,28 @@ void RopeNode::setParentNode(RopeNode *nodeToAdd) {
   this->parentNode = nodeToAdd;
 }
 
-char *RopeNode::getCurrentStr() const { return this->currentStr; }
+std::string &RopeNode::getCurrentStr() const { return this->currentStr; }
 
-void RopeNode::setCurrentStr(char *newStr) { this->currentStr = newStr; }
+void RopeNode::setCurrentStr(std::string &newStr) { this->currentStr = newStr; }
 
 int RopeNode::getLeafCount() const { return this->leafCount; }
 
 void RopeNode::setLeftCount(const int newCount) { this->leafCount = newCount; }
+
+int RopeNode::getWeight() const { return this->weight; }
+
+void RopeNode::determineWeight() {
+  if (this->currentStr != "") {
+    this->weight = this->currentStr.length();
+  } else {
+    RopeNode *left = this->leftNode;
+    int sum = left->getWeight();
+    while (left->getRightNode() != nullptr) {
+      sum += left->getRightNode()->getWeight();
+      left = left->getRightNode();
+    }
+    this->weight = sum;
+  }
+}
 
 } // namespace Model

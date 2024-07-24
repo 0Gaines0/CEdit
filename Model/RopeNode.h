@@ -1,4 +1,5 @@
 #pragma once
+#include "string"
 
 namespace Model {
 
@@ -10,8 +11,9 @@ private:
   RopeNode *rightNode;
   RopeNode *parentNode;
 
-  char *currentStr;
+  std::string &currentStr;
   int leafCount;
+  int weight;
 
   RopeNode *getLeftNode() const;
   RopeNode *getRightNode() const;
@@ -28,11 +30,14 @@ public:
   RopeNode *getNode(const NodeDirection direction);
   void setNode(const NodeDirection direction, RopeNode *nodeToAdd);
 
-  char *getCurrentStr() const;
-  void setCurrentStr(char *str);
+  std::string &getCurrentStr() const;
+  void setCurrentStr(std::string &newString);
 
   int getLeafCount() const;
   void setLeftCount(const int newCount);
+
+  int getWeight() const;
+  void determineWeight();
 };
 
 } // namespace Model
