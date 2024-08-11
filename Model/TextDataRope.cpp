@@ -1,5 +1,7 @@
 #include "TextDataRope.h"
 #include "RopeNode.h"
+#include <exception>
+#include <stdexcept>
 
 namespace Model {
 
@@ -97,7 +99,48 @@ void TextDataRope::split(RopeNode *node, int index, RopeNode *&leftPart,
                 rightChildRight);
     leftPart = new RopeNode();
     leftPart->setNode(NodeDirection::Left, leftChildLeft);
+  } else {
+    RopeNode *rightChildLeft;
+    RopeNode *rightChildRight;
+    split(node->getNode(NodeDirection::Right), index - leftWeight,
+          rightChildLeft, rightChildRight);
+    leftPart = node;
+    leftPart->setNode(NodeDirection::Right, nullptr);
+    rightPart = new RopeNode();
+    rightPart->setNode(NodeDirection::Left, rightChildLeft);
+    rightPart->setNode(NodeDirection::Right, rightChildRight);
   }
+}
+
+int TextDataRope::indexOf(const int startIdx, char *charToFind) {
+  if (this->rootNode == nullptr) {
+    throw std::runtime_error("Rope is empty.");
+  }
+  std::stack<RopeNode *> nodeStack;
+  nodeStack.push(this->rootNode);
+  int currentIndex = 0;
+  while (!nodeStack.empty()) {
+    RopeNode *currentNode = nodeStack.top();
+    nodeStack.pop();
+    if (currentNode->getNode(NodeDirection::Left) == nullptr &&
+        currentNode->getNode(NodeDirection::Right) == nullptr) {
+      std::string currentStr = currentNode->getCurrentStr();
+      for (size_t i = 0; i < currentStr.size(); i++) {
+        if (currentIndex >= startIdx && currentStr[i] == *charToFind) {
+          return currentIndex;
+        }
+        currentIndex++;
+      }
+    } else {
+      if (currentNode->getNode(NodeDirection::Right) != nullptr) {
+        nodeStack.push(currentNode->getNode(NodeDirection::Right));
+      }
+      if (currentNode->getNode(NodeDirection::Left) != nullptr) {
+        nodeStack.push(currentNode->getNode(NodeDirection::Left));
+      }
+    }
+  }
+  return -1;
 }
 
 } // namespace Model
