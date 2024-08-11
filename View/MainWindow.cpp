@@ -42,6 +42,8 @@ void MainWindow::configureFileMenuBar() {
   connect(newMenuAction, &QAction::triggered, this, &MainWindow::addNewTab);
   connect(deleteMenuAction, &QAction::triggered, this,
           &MainWindow::deleteCurrentTab);
+  connect(exitApplicationAction, &QAction::triggered, this,
+          &MainWindow::closeApplication);
 }
 
 void MainWindow::configureEditMenuBar() {
@@ -68,4 +70,7 @@ void MainWindow::configureSettingsMenuBar() {
 
 void MainWindow::addNewTab() { this->fileTabWidget->addNewTab(); }
 void MainWindow::deleteCurrentTab() { this->fileTabWidget->deleteCurrentTab(); }
+void MainWindow::closeApplication() {
+  this->fileTabWidget->parentWidget()->close();
+}
 } // namespace View

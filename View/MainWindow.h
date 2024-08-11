@@ -20,6 +20,7 @@ private:
 private slots:
   void addNewTab();
   void deleteCurrentTab();
+  void closeApplication();
 
 public:
   MainWindow(int width, int height);
